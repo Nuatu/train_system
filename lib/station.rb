@@ -1,6 +1,6 @@
 class Station
 
-  attr_reader :name
+  attr_reader :name, :id
 
   def initialize(station_info)
     @name = station_info["name"]
@@ -15,6 +15,11 @@ class Station
       stations << new_station
     end
     stations
+  end
+
+  def add_line(line_name)
+    DB.exec("INSERT INTO stops (station_id, line_id) VALUES (#{self.id}, #{line_name.id});")
+
   end
 
   def save
