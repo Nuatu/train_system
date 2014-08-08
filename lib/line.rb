@@ -17,6 +17,20 @@ class Line
     line
   end
 
+  def view_all_stations
+    results = DB.exec("SELECT * FROM stops WHERE line_id = #{self.id};")
+    stations = []
+    results.each do |result|
+      station_id = result['station_id'].to_i
+      outputs = DB.exec("SELECT * FROM station WHERE id = #{station_id};")
+      outputs.each do |output|
+        new_station = Station.new(output)
+        stations << new_station
+      end
+    end
+    stations
+  end
+
   def save
     results = DB.exec("INSERT into line (name) VALUES ('#{name}') RETURNING id;")
     @id = results.first['id'].to_i
