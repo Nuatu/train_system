@@ -16,4 +16,10 @@ class Line
     end
     line
   end
+
+  def save
+    results = DB.exec("INSERT into line (name) VALUES ('#{name}') RETURNING id;")
+    @id = results.first['id'].to_i
+  end
+
 end

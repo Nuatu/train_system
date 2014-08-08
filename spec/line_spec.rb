@@ -13,4 +13,11 @@ describe "Line" do
     end
   end
 
+  describe 'save' do
+    it 'saves new lines ' do
+      new_line = Line.new({"name" => "fun line"})
+      new_line.save
+      expect(Line.all.length).to eq 1
+    end
+  end
 end
