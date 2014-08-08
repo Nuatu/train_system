@@ -30,8 +30,23 @@ describe 'station' do
       new_line.save
       new_station.add_line(new_line)
       results = DB.exec("SELECT * FROM stops WHERE station_id = #{new_station.id}")
-
       expect(results.first['line_id'].to_i).to eq new_line.id
+    end
+  end
+
+  describe "view_all_lines" do
+    it "lists all the lines associted with a station" do
+      new_station = Station.new({"name" => "Pteradactyl"})
+      new_station.save
+      new_line = Line.new({"name" => "fun line"})
+      new_line.save
+      new_line_two = Line.new({"name" => "big line"})
+      new_line_two.save
+      new_line_three = Line.new({"name" => "short line"})
+      new_line_three.save
+      new_station.add_line(new_line)
+      new_station.add_line(new_line_two)
+      expect(new_station.view_all_lines).to eq [new_line, new_line_two]
     end
   end
 end
