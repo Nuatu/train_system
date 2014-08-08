@@ -21,7 +21,4 @@ class Station
     result = DB.exec("INSERT INTO station (name) VALUES ('#{name}') RETURNING id;")
     @id = result.first['id'].to_i
   end
-
-
-
 end
