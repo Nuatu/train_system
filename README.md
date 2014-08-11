@@ -12,5 +12,8 @@ Allows users to search train lines and stations to view when trains are coming. 
 ###Setup
 Either clone this repository or download the .zip and open in your console or sublime. You will have to create your own database.
 
+![Alt text](https://github.com/Nuatu/train_system/blob/master/db_schema.png)
+
+
 ###License
 MIT
