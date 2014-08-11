@@ -17,20 +17,16 @@ class Station
     stations
   end
 
-  def add_line(line_name)
-    DB.exec("INSERT INTO stops (station_id, line_id) VALUES (#{self.id}, #{line_name.id});")
+  def add_line(line)
+    DB.exec("INSERT INTO stops (station_id, line_id) VALUES (#{self.id}, '#{line.id}');")
   end
 
   def view_all_lines
-    results = DB.exec("SELECT * FROM stops WHERE station_id = #{self.id};")
     lines = []
+    results = DB.exec("SELECT line.* FROM station join stops on (station.id = stops.station_id) join line on (stops.line_id = line.id) where station.id =#{self.id};")
     results.each do |result|
-      line_id = result['line_id'].to_i
-      outputs = DB.exec("SELECT * FROM line WHERE id = #{line_id};")
-      outputs.each do |output|
-        new_line = Line.new(output)
-        lines << new_line
-      end
+      new_line = Line.new(result)
+      lines << new_line
     end
     lines
   end
@@ -40,7 +36,7 @@ class Station
   end
 
   def save
-    result = DB.exec("INSERT INTO station (name) VALUES ('#{name}') RETURNING id;")
+    result = DB.exec("INSERT INTO station (name) VALUES ('#{@name}') RETURNING id;")
     @id = result.first['id'].to_i
   end
 end

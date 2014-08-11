@@ -18,7 +18,7 @@ describe 'station' do
     it "saves a station to the database" do
       new_station = Station.new({"name" => "Pteradactyl"})
       new_station.save
-      expect(Station.all.length).to eq 1
+      expect(Station.all[0].name).to eq ("Pteradactyl")
     end
   end
 
