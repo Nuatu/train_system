@@ -1,9 +1,9 @@
 Train System
 ==========
 
-by [Anna Valkov] (https://github.com/aavalkov) and [Andrew Benavides] (https://github.com/thoughtquery)
+by [Anna Valkov] (https://github.com/aavalkov) and [Nuatu Tseggai] (https://github.com/nuatu)
 
-August 8, 2014
+August 11, 2014
 _______________
 
 ###About
