@@ -1,4 +1,4 @@
-TO-DO LIST
+Train System
 ==========
 
 by [Anna Valkov] (https://github.com/aavalkov) and [Andrew Benavides] (https://github.com/thoughtquery)
